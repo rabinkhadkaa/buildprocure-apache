@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  IMAGE_NAME: 'ilifesregistry.azurecr.io/buildprocure-apache'
+  IMAGE_TAG: 'latest'
+
+steps:
+- task: Docker@2
+  displayName: Build and Push Apache Image
+  inputs:
+    containerRegistry: 'ILIFES_ACR_SERVICE_CONNECTION'
+    repository: '$(IMAGE_NAME)'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
+    tags: |
+      $(IMAGE_TAG)
+      $(Build.BuildId)
