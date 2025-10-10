@@ -11,7 +11,8 @@ RUN sed -i '/LoadModule proxy_module/s/^#//g' conf/httpd.conf && \
 COPY apache-config.conf /usr/local/apache2/conf/extra/buildprocure.conf
 
 # Include it from the main Apache config
-RUN echo "\n# Include BuildProcure configuration\nInclude conf/extra/buildprocure.conf" >> /usr/local/apache2/conf/httpd.conf
+RUN echo "ServerName buildprocure.com" >> /usr/local/apache2/conf/httpd.conf && \
+echo "\n# Include BuildProcure configuration\nInclude conf/extra/buildprocure.conf" >> /usr/local/apache2/conf/httpd.conf
 
 # Copy SSL certificates
 COPY cert/ /usr/local/apache2/conf/ssl/
