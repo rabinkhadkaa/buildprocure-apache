@@ -1,8 +1,11 @@
 trigger:
   - main
 
+# 👇 Target your self-hosted agent in Default pool
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'Default'
+  demands:
+    - Agent.Name -equals SeftHosted
 
 variables:
   dockerRegistryServiceConnection: 'ilifes-acr-docker'   # ✅ use your working service connection
