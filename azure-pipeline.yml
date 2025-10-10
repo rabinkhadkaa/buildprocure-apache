@@ -30,8 +30,9 @@ stages:
           # Debug: List repo contents
           - script: |
               echo "Listing repo files..."
-              ls -la
+              dir
             displayName: 'Debug: Show checked out files'
+            shell: cmd
 
           - task: Docker@2
             displayName: 'Docker Login to ACR'
