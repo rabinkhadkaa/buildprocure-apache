@@ -16,7 +16,7 @@ echo "\n# Include BuildProcure configuration\nInclude conf/extra/buildprocure.co
 
 # Copy SSL certificates
 COPY cert/ /usr/local/apache2/conf/ssl/
-
+COPY . /var/www/html/
 # Expose ports
 EXPOSE 80 443
 
